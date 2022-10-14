@@ -32,12 +32,12 @@ func test_should_execute_add_op{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, 
     let b = Uint256(b_low, b_high);
     let (args) = alloc();
     with opcodes, stack {
-        Stack.push(a);
         Stack.push(b);
+        Stack.push(a);
         Opcodes.execute(Opcodes.ADD_CODE, 0, args);
         let (execute_output) = Stack.pop();
-        Stack.push(a);
         Stack.push(b);
+        Stack.push(a);
         ADD();
         let (op_output) = Stack.pop();
         assert_uint256_eq(op_output, execute_output);
@@ -69,12 +69,12 @@ func test_should_execute_mul_op{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, 
     let b = Uint256(b_low, b_high);
     let (args) = alloc();
     with opcodes, stack {
-        Stack.push(a);
         Stack.push(b);
+        Stack.push(a);
         Opcodes.execute(Opcodes.MUL_CODE, 0, args);
         let (execute_output) = Stack.pop();
-        Stack.push(a);
         Stack.push(b);
+        Stack.push(a);
         MUL();
         let (op_output) = Stack.pop();
         assert_uint256_eq(op_output, execute_output);
